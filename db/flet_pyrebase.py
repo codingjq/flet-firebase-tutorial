@@ -1,5 +1,7 @@
 import pyrebase
 from db.config import config_keys as keys
+# store your own firebase config there
+
 
 from flet.security import encrypt, decrypt
  

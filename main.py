@@ -33,6 +33,6 @@ def main(page: ft.Page):
 
 if __name__ == "__main__":
     import os
-    ft.app(target=main, assets_dir="./assets", port=int(os.getenv("FLET_PORT", 8502)), name=os.getenv("FLET_PATH", ''), view=ft.FLET_APP_HIDDEN)
+    ft.app(target=main, assets_dir="./assets", port=int(os.getenv("FLET_PORT", 8502)), name=os.getenv("FLET_PATH", ''))
 
     

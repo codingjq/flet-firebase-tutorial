@@ -63,12 +63,12 @@ def DashboardView(page, ft, myPyrebase):
 
 
     myPage = ft.Column([
-            ft.Row([ft.Text("Dashboard", size=20)], alignment="center"),
-            ft.Row([username], alignment="center"),
-            ft.Column(all_notes),
-            ft.Row([note_field]),
-            ft.Row([add_note_button], alignment="center"),
-            ft.Row([logout_button], alignment="center")
+            ft.Row([ft.Text("Dashboard", size=20)], alignment=ft.MainAxisAlignment.CENTER),
+            ft.Row([username], alignment=ft.MainAxisAlignment.CENTER),
+            ft.Column(all_notes, alignment="center"),
+            ft.Row([note_field], alignment=ft.MainAxisAlignment.CENTER),
+            ft.Row([add_note_button], alignment=ft.MainAxisAlignment.CENTER),
+            ft.Row([logout_button], alignment=ft.MainAxisAlignment.CENTER)
             ])
             
     return {

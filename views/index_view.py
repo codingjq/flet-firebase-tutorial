@@ -47,17 +47,21 @@ def IndexView(page, ft=ft, myPyrebase=None):
     
     myPage = ft.Column(
         [
-            ft.Stack(
+            ft.Container(
+                ft.Stack(
                 [
                     banner,
                     welcome_text
                     ]
+            ), alignment=ft.alignment.center
             ),
             ft.Row(
-                [email]
+                [email],
+                alignment=ft.MainAxisAlignment.CENTER
                 ),
             ft.Row(
-                [password]
+                [password],
+                alignment=ft.MainAxisAlignment.CENTER
                 ),
             ft.Row(
                 [register_button, sign_in_button],

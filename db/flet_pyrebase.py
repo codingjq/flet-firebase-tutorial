@@ -9,7 +9,7 @@ secret_key = "sample"
 
 class PyrebaseWrapper:
     """
-    Wraps Pyrebase with flet authentication flow. 
+    Wraps Pyrebase with flet authentication flow and abstracts crud for my app. 
     """
 
     def __init__(self, page):
@@ -53,7 +53,6 @@ class PyrebaseWrapper:
     def sign_out(self):
         self.erase_token()
 
-
     def check_token(self):
         ### Prevents the user from having to sign in all the time
         encrypted_token = self.page.client_storage.get("firebase_token")
@@ -72,8 +71,18 @@ class PyrebaseWrapper:
     def get_username(self):
         return self.db.child("users").child(self.uuid).child("username").get(token=self.idToken).val()
 
+    ### CRUD ###
+    def add_note(self, data):
+        if self.uuid == None:
+            self.uuid = self.auth.get_account_info(self.idToken)["users"][0]["localId"]
+        self.db.child("users").child(self.uuid).child("notes").push(data, self.idToken)
+
     def get_notes(self):
         return self.db.child("users").child(self.uuid).get(token=self.idToken).val()
+
+    def stream_data(self, stream_handler):
+        stream = self.db.child("users").child(self.uuid).child("notes").stream(stream_handler=stream_handler, token=self.idToken)
+        self.streams.append(stream)
 
     def edit_note(self, note_uuid, data):
         self.db.child("users").child(self.uuid).child("notes").child(note_uuid).update(data, token=self.idToken)
@@ -81,16 +90,7 @@ class PyrebaseWrapper:
     def delete_note(self, note_uuid):
         self.db.child("users").child(self.uuid).child("notes").child(note_uuid).remove(token=self.idToken)
 
-    def set_data(self, data):
-        if self.uuid == None:
-            self.uuid = self.auth.get_account_info(self.idToken)["users"][0]["localId"]
-        self.db.child("users").child(self.uuid).child("notes").push(data, self.idToken)
-
-
-    def stream_data(self, stream_handler):
-        stream = self.db.child("users").child(self.uuid).child("notes").stream(stream_handler=stream_handler, token=self.idToken)
-        self.streams.append(stream)
-
+    ### not killing the streams causes read multiplication
     def kill_all_streams(self):
         for stream in self.streams:
             try:

@@ -18,23 +18,23 @@ def DashboardView(page, ft, myPyrebase):
 
     def on_page_load():
         clean_notes()
+        username.value = "Welcome"
         if myPyrebase.check_token() == "Success":
             myPyrebase.stream_data(handle_stream)
             handle = myPyrebase.get_username()
             if handle:
                 username.value = "Welcome, " + "@" + handle
-            else:
-                username.value = "Welcome"
             page.update()
      
 
     def handle_add(e):
-        myPyrebase.set_data({"note": note_field.value})
+        myPyrebase.add_note({"note": note_field.value})
         note_field.value = ""
         page.update()
         
     def handle_logout(*e):
         clean_notes()
+        username.value = ""
         myPyrebase.kill_all_streams()
         myPyrebase.sign_out()
         page.go("/")

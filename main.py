@@ -11,7 +11,7 @@ def main(page: ft.Page):
     page.theme_mode = "dark"
 
     myPyrebase = PyrebaseWrapper(page)
-    myRouter = Router(page, ft, myPyrebase)
+    myRouter = Router(page, myPyrebase)
 
     page.on_route_change = myRouter.route_change
 
@@ -22,6 +22,6 @@ def main(page: ft.Page):
     page.go('/')
     
 if __name__ == "__main__":
-    ft.app(target=main)
+    ft.app(target=main, assets_dir='assets')
 
     

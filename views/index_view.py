@@ -1,6 +1,6 @@
+import flet as ft
 
-
-def IndexView(page, ft, myPyrebase=None):
+def IndexView(page, myPyrebase=None):
     title = "Flet + Pyrebase"
 
     def on_load():

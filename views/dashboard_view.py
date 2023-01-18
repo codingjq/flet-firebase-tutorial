@@ -1,6 +1,8 @@
+import flet as ft
+
 from user_controls.note import Note
 
-def DashboardView(page, ft, myPyrebase):
+def DashboardView(page, myPyrebase):
     title = "My Dashboard"
 
     username = ft.Text("Welcome", size=16)

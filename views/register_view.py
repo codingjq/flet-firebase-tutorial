@@ -1,7 +1,7 @@
+import flet as ft
 
-def RegisterView(page, ft, myPyrebase):
+def RegisterView(page, myPyrebase):
     title = "Register to Flet + Pyrebase"
-
 
     def handle_sign_up(e):
         try:
@@ -18,8 +18,6 @@ def RegisterView(page, ft, myPyrebase):
         )
         page.snack_bar.open = True
         page.update()
-
-
 
     banner = ft.Image(src='banner.png', width=250, border_radius=5, fit=ft.ImageFit.COVER)
     welcome_text = ft.Text("User Registration", size=26, bottom=10, right=10, color=ft.colors.WHITE70)

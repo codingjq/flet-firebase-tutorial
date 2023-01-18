@@ -1,11 +1,24 @@
-# flet-pyrebase-wrapper
-Experimenting with using Firebase with Flet
+# Flet Firebase Tutorial
+A notes application with Registration, Authentication, and Realtime CRUD that leverages the speed
+and utility of both Flet and Firebase.
 
-I'm probably looking to turn this wrapper into a more robust solution,
-but for now it has met my needs for creating a Flet application with a 
-Firebase backend including auth and database.
+## Explainer video to be posted on [CodingJQ](https://youtube.com/@codingjq)
 
-The primary reason for being unable to simply use pyrebase out of the
-box was the need to persist authentication to different routes. Presently,
-Flet docs say it only provides OAuth2 with its auth component. Devs are left
-to their own devices otherwise.
+I used a wrapper around Pyrebase4 to abstract handling my data away from the views.
+
+I used a Router that I designed in a previous tutorial. Stand by for a new Router that passes information
+more efficiently from page to page.
+
+I used a UserControl to build each Note to show how to build a custom UserControl.
+
+
+## Running the example
+
+1. git clone https://github.com/codingjq/flet-firebase-tutorial
+2. python3 -m venv venv
+3. ./venv/Scripts/active or source ./venv/bin/activate
+4. pip install -r requirements.txt
+5. Create config.py file with your Firebase Realtime Database details.
+6. Configure Firebase rules to allow .read/.write for $uid. ($uid === auth.uid)
+7. Enable authentication by email and password on Firbase. 
+8. flet main.py

@@ -1,12 +1,10 @@
 
-import flet as ft
-from urllib.error import HTTPError
 
-def IndexView(page, ft=ft, myPyrebase=None):
+def IndexView(page, myPyrebase=None):
     title = "Flet + Pyrebase"
 
     def on_load():
-        if myPyrebase.checkToken():
+        if myPyrebase.check_token():
             page.go('/dashboard')
 
     def handle_sign_in_error():
@@ -71,5 +69,6 @@ def IndexView(page, ft=ft, myPyrebase=None):
     
     return {
         "view":myPage,
-        "title": title
+        "title": title,
+        "load": on_load
         }

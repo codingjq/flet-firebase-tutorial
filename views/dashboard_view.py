@@ -1,8 +1,4 @@
-import flet as ft
-
-
 from user_controls.note import Note
-from collections import OrderedDict
 
 def DashboardView(page, ft, myPyrebase):
     title = "My Dashboard"

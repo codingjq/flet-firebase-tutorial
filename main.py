@@ -7,32 +7,21 @@ def main(page: ft.Page):
 
     page.window_height = 500
     page.window_width = 300
-
-
+    page.scroll = "auto"
     page.theme_mode = "dark"
 
     myPyrebase = PyrebaseWrapper(page)
-
     myRouter = Router(page, ft, myPyrebase)
 
     page.on_route_change = myRouter.route_change
-
-
-    page.scroll = "auto"
 
     page.add(
         myRouter.body
     )
 
-    if myPyrebase.check_token() == "Success":
-        page.go('/dashboard')
-    else:
-        page.go('/')
+    page.go('/')
     
-
-
 if __name__ == "__main__":
-    import os
-    ft.app(target=main, assets_dir="./assets", port=int(os.getenv("FLET_PORT", 8502)), name=os.getenv("FLET_PATH", ''))
+    ft.app(target=main)
 
     

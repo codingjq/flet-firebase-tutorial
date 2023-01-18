@@ -1,5 +1,3 @@
-import flet as ft
-
 
 def RegisterView(page, ft, myPyrebase):
     title = "Register to Flet + Pyrebase"

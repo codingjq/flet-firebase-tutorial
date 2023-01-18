@@ -1,6 +1,6 @@
 
 
-def IndexView(page, myPyrebase=None):
+def IndexView(page, ft, myPyrebase=None):
     title = "Flet + Pyrebase"
 
     def on_load():

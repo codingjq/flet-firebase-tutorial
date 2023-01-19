@@ -2,7 +2,7 @@
 A notes application with Registration, Authentication, and Realtime CRUD that leverages the speed
 and utility of both Flet and Firebase.
 
-## Explainer video to be posted on [CodingJQ](https://youtube.com/@codingjq)
+## Video is published on [YouTube: CodingJQ](https://youtu.be/rLTnxJbjZfs)
 
 I used a wrapper around Pyrebase4 to abstract handling my data away from the views.
 

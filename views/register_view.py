@@ -6,7 +6,7 @@ def RegisterView(page, myPyrebase):
     def handle_sign_up(e):
         try:
             myPyrebase.register_user(name.value, username.value, email.value, password.value)
-            name.value, username.value, email.value, password.value = ''
+            name.value, username.value, email.value, password.value = '', '', '', ''
             page.go('/')
         except:
             handle_sign_in_error()
